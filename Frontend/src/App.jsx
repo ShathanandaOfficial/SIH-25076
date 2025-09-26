@@ -11,9 +11,10 @@
 //   return (
 //     <Router>
 //       <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
+//         <Navbar />
 //         <Register />
 //         <Login />
-//         <Navbar />
+        
 //         <Routes>
 //           <Route path="/" element={<Home />} />
 //           <Route path="/detect" element={<Detection />} />
@@ -25,7 +26,7 @@
 //   )
 // }
 
-// export default App
+// export default App;
 
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -69,15 +70,17 @@ function App() {
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
         <Navbar />
         <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          {/* Public Routes */} 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/detect" element={<Detection />} />
+           <Route path="/history" element={<History />} />
+           <Route path="/about" element={<About />} />
 
           {/* Protected Routes */}
-          <Route path="/detect" element={<PrivateRoute><Detection /></PrivateRoute>}/>
-          <Route path="/history" element={<PrivateRoute><History /></PrivateRoute>}/>
+          {/* <Route path="/detect" element={<PrivateRoute><Detection /></PrivateRoute>}/>
+          <Route path="/history" element={<PrivateRoute><History /></PrivateRoute>}/> */}
         </Routes>
         <Footer />
       </div>
