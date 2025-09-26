@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const navigation = [
     { name: 'Home', href: '/', current: location.pathname === '/' },
-    { name: 'Detect Disease', href: '/detect', current: location.pathname === '/detect' },
+    { name: 'Query', href: '/detect', current: location.pathname === '/detect' },
     { name: 'History', href: '/history', current: location.pathname === '/history' },
     { name: 'About', href: '/about', current: location.pathname === '/about' },
   ]
@@ -21,7 +21,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
               <Leaf className="h-8 w-8 text-green-600" />
-              <span className="ml-2 text-xl font-bold text-green-800">CottonGuard</span>
+              <span className="ml-2 text-xl font-bold text-green-800">Digital Krishi</span>
             </Link>
           </div>
 
