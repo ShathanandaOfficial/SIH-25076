@@ -37,13 +37,13 @@ import Detection from './pages/Detection';
 import History from './pages/History';
 import About from './pages/About';
 import PrivateRoute from './components/PrivateRoute';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
         <Navbar />
-
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
@@ -55,6 +55,7 @@ function App() {
           <Route path="/detect" element={<PrivateRoute><Detection /></PrivateRoute>}/>
           <Route path="/history" element={<PrivateRoute><History /></PrivateRoute>}/>
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
