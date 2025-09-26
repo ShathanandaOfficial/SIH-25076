@@ -1,11 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Leaf } from 'lucide-react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Menu, X, Leaf, LogIn } from 'lucide-react'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
 
   const navigation = [
     { name: 'Home', href: '/', current: location.pathname === '/' },
@@ -13,6 +14,11 @@ const Navbar = () => {
     { name: 'History', href: '/history', current: location.pathname === '/history' },
     { name: 'About', href: '/about', current: location.pathname === '/about' },
   ]
+
+  const handleLogin = () => {
+    navigate('/login')
+    setIsOpen(false) // Close mobile menu if open
+  }
 
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
@@ -40,10 +46,29 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
+            
+            {/* Login Button - Desktop */}
+            <button
+              onClick={handleLogin}
+              className="flex items-center px-4 py-2 rounded-md text-sm font-medium bg-green-600 text-white hover:bg-green-700 transition-colors duration-200"
+            >
+              <LogIn className="h-4 w-4 mr-2" />
+              Login
+            </button>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-4">
+            {/* Login Button - Mobile (visible when menu is closed) */}
+            {!isOpen && (
+              <button
+                onClick={handleLogin}
+                className="p-2 rounded-md text-gray-600 hover:text-green-600 hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500"
+              >
+                <LogIn className="h-5 w-5" />
+              </button>
+            )}
+            
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-green-600 hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500"
@@ -71,6 +96,15 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Login Button - Mobile (inside menu) */}
+              <button
+                onClick={handleLogin}
+                className="flex items-center w-full text-left px-3 py-2 rounded-md text-base font-medium bg-green-600 text-white hover:bg-green-700 transition-colors duration-200"
+              >
+                <LogIn className="h-5 w-5 mr-3" />
+                Login
+              </button>
             </div>
           </div>
         )}
