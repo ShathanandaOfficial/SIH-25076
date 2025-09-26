@@ -1,0 +1,100 @@
+/* 3D Loader Styles */
+.loader-bg {
+  background: linear-gradient(135deg, #0a4d3a 0%, #1a5d4a 25%, #2d6e5a 50%, #4a8c6f 75%, #6ba385 100%);
+}
+
+.floating-particle {
+  position: absolute;
+  background: radial-gradient(circle, rgba(144, 238, 144, 0.8), transparent);
+  border-radius: 50%;
+  animation: floatUp 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes titlePulse {
+  0%, 100% { 
+    transform: scale(1); 
+    filter: brightness(1); 
+  }
+  50% { 
+    transform: scale(1.02); 
+    filter: brightness(1.1); 
+  }
+}
+
+@keyframes progressShine {
+  0% { 
+    background-position: 200% 0; 
+  }
+  100% { 
+    background-position: -200% 0; 
+  }
+}
+
+@keyframes textFade {
+  0%, 100% { 
+    opacity: 0.6; 
+  }
+  50% { 
+    opacity: 1; 
+  }
+}
+
+.title-gradient {
+  background: linear-gradient(45deg, #90EE90, #32CD32, #228B22);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(50, 205, 50, 0.3);
+  animation: titlePulse 3s ease-in-out infinite;
+}
+
+.progress-shine {
+  background: linear-gradient(90deg, #32CD32, #90EE90, #32CD32);
+  background-size: 200% 100%;
+  animation: progressShine 2s linear infinite;
+  box-shadow: 0 0 20px rgba(50, 205, 50, 0.5);
+}
+
+.text-fade {
+  animation: textFade 2s ease-in-out infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .title-gradient {
+    font-size: 1.75rem;
+  }
+  
+  .stats-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-gradient {
+    font-size: 1.5rem;
+  }
+  
+  .ui-overlay {
+    padding: 2rem 1.5rem;
+  }
+}

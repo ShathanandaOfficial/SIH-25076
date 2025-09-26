@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { MessageSquare, BrainCircuit, Sparkles, Mic, MapPin } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const Home = () => {
   const features = [

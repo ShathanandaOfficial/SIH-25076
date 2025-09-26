@@ -27,7 +27,7 @@
 
 // export default App
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -38,8 +38,32 @@ import History from './pages/History';
 import About from './pages/About';
 import PrivateRoute from './components/PrivateRoute';
 import Footer from './components/Footer';
+import Loader3D from './components/Loader3D';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  
+  console.log('App render - isLoading:', isLoading);
+
+  useEffect(() => {
+    // Check if we should skip the loader (only in development)
+    const skipLoader = import.meta.env.DEV && window.location.search.includes('skiploader');
+    
+    if (skipLoader) {
+      // Skip loader only in development with ?skiploader
+      setIsLoading(false);
+    }
+    // Note: Removed hasSeenLoader check - loader will show every time
+  }, []);
+
+  const handleLoadComplete = () => {
+    setIsLoading(false);
+    // Removed localStorage - loader will show every time for better UX
+  };
+
+  if (isLoading) {
+    return <Loader3D onLoadComplete={handleLoadComplete} />;
+  }
   return (
     <Router>
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
