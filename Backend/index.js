@@ -1,18 +1,8 @@
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const app = express();
-const PORT = 3000;
+// This file is deprecated. Please use src/server.js instead.
+// Redirect to the new structured application
 
-mongoose.connect(process.env.MONGO_URL)
-.then(() => {
-    console.log('Connected to MongoDB');
-})
-.catch((error) => {
-    console.error('MongoDB connection error:', error);
-});
+console.warn('⚠️  Warning: index.js is deprecated. Please use "npm start" or "npm run dev" instead.');
+console.log('🔄 Redirecting to the new application structure...');
 
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+// Import and start the new application
+require('./src/server');
